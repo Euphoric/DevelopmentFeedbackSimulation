@@ -15,66 +15,66 @@ Output of each simulation is how long the whole process went and if there is sti
 ## Results of some simulations
 
 ### Minimal testing
-Development process with minimal testing.
-Missed errors probability: 37.2%
-Development time average: 17.8 h
-50 percentile : 13.8 h
-70 percentile : 18.9 h
-85 percentile : 26.4 h
-95 percentile : 42.1 h
+Development process with minimal testing. Notice high amount of errors that get through.
+* Missed errors probability: 36.6%
+* Development time average: 17.8 h
+* 50 percentile : 13.8 h
+* 70 percentile : 18.7 h
+* 85 percentile : 26.3 h
+* 95 percentile : 41.2 h
 ### Heavy manual testing
-Process where most testing is done manually
-Missed errors probability: 14.5%
-Development time average: 36.0 h
-50 percentile : 31.8 h
-70 percentile : 42.2 h
-85 percentile : 53.7 h
-95 percentile : 71.7 h
+Process where most testing is done manually. Much slower, but less errors.
+* Missed errors probability: 15.2%
+* Development time average: 35.9 h
+* 50 percentile : 31.4 h
+* 70 percentile : 41.7 h
+* 85 percentile : 53.8 h
+* 95 percentile : 71.8 h
 ### Mostly integration tests
-Testing where slow integration tests are used. Allows for lower manual testing.
-Missed errors probability: 8.9%
-Development time average: 24.6 h
-50 percentile : 21.3 h
-70 percentile : 27.9 h
-85 percentile : 36.5 h
-95 percentile : 50.4 h
+Testing where slow integration tests are used. Allows for lower manual testing. Faster and less errors.
+* Missed errors probability: 9.4%
+* Development time average: 24.7 h
+* 50 percentile : 21.4 h
+* 70 percentile : 28.2 h
+* 85 percentile : 36.5 h
+* 95 percentile : 50.3 h
 ### Unit + integration tests
-Testing with some unit tests and integration tests. Allows for low manual testing.
-Missed errors probability: 5.6%
-Development time average: 18.9 h
-50 percentile : 15.9 h
-70 percentile : 20.8 h
-85 percentile : 27.7 h
-95 percentile : 40.6 h
+Testing with some unit tests and integration tests. Allows for low manual testing. Faster and less errors.
+* Missed errors probability: 6.3%
+* Development time average: 18.9 h
+* 50 percentile : 15.8 h
+* 70 percentile : 20.7 h
+* 85 percentile : 27.7 h
+* 95 percentile : 41.1 h
 ### Better unit + integration tests
-Testing with good unit tests and integration tests. Allows for minimal manual testing.
-Missed errors probability: 1.8%
-Development time average: 15.0 h
-50 percentile : 12.2 h
-70 percentile : 16.1 h
-85 percentile : 21.7 h
-95 percentile : 32.5 h
+Testing with good unit tests and integration tests. Allows for minimal manual testing. Even faster and less errors.
+* Missed errors probability: 2.0%
+* Development time average: 15.1 h
+* 50 percentile : 12.2 h
+* 70 percentile : 16.1 h
+* 85 percentile : 21.8 h
+* 95 percentile : 33.1 h
 ### Continuous delivery
-Testing with highly reliable unit tests and integration tests and almost no manual testing.
-Missed errors probability: 0.5%
-Development time average: 13.8 h
-50 percentile : 10.9 h
-70 percentile : 14.6 h
-85 percentile : 20.3 h
-95 percentile : 31.5 h
+Testing with highly reliable unit tests and integration tests and almost no manual testing. Really fast and almost no errors.
+* Missed errors probability: 0.4%
+* Development time average: 13.9 h
+* 50 percentile : 11.0 h
+* 70 percentile : 14.6 h
+* 85 percentile : 20.3 h
+* 95 percentile : 31.5 h
 ### Heavy manual testing + shorter dev time
-Same as Heavy manual testing but with shorter development times
-Missed errors probability: 14.5%
-Development time average: 29.9 h
-50 percentile : 25.7 h
-70 percentile : 35.2 h
-85 percentile : 45.8 h
-95 percentile : 61.3 h
+Same as Heavy manual testing but with shorter development times. Development speed has minimal impact when testing is slow.
+* Missed errors probability: 14.5%
+* Development time average: 29.8 h
+* 50 percentile : 25.8 h
+* 70 percentile : 34.9 h
+* 85 percentile : 45.6 h
+* 95 percentile : 60.6 h
 ### Continuous delivery + shorter dev time
-Same as Continuous delivery but with shorter development times
-Missed errors probability: 0.7%
-Development time average: 7.5 h
-50 percentile : 6.9 h
-70 percentile : 8.2 h
-85 percentile : 10.0 h
-95 percentile : 12.8 h
+Same as Continuous delivery but with shorter development times. Fast development has huge impact when testing is mostly automated.
+* Missed errors probability: 0.7%
+* Development time average: 7.5 h
+* 50 percentile : 7.0 h
+* 70 percentile : 8.2 h
+* 85 percentile : 10.1 h
+* 95 percentile : 13.0 h
