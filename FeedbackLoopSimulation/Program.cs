@@ -141,7 +141,7 @@ namespace FeedbackLoopSimulation
                 }
             }
 
-            Console.WriteLine($"## {simulation.Name}");
+            Console.WriteLine($"### {simulation.Name}");
             Console.WriteLine($"{simulation.Description}");
             var detectionChance = missedCount / (double) trialCount * 100;
             Console.WriteLine($"Missed errors probability: {detectionChance:N1}%");
