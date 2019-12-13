@@ -129,17 +129,24 @@ namespace FeedbackLoopSimulation
             Console.WriteLine($"Missed errors probability: {detectionChance:N1}%");
             Console.WriteLine($"Development time average: {successTime.Average():N1} h");
 
-            var repeatCountGroups = repeatCounts.GroupBy(x => x).Select(x => new {Repeats = x.Key, Count = x.Count()})
-                .OrderBy(x => x.Repeats);
+            var orderedTimes = successTime.OrderBy(x => x).ToArray();
 
-            Console.WriteLine($"Fix counts:");
-            foreach (var countGroup in repeatCountGroups)
-            {
-                Console.WriteLine($"{countGroup.Repeats}: {countGroup.Count}");
-            }
+            Console.WriteLine("50 percentile : {0:N1} h", orderedTimes[orderedTimes.Length * 50 / 100]);
+            Console.WriteLine("70 percentile : {0:N1} h", orderedTimes[orderedTimes.Length * 70 / 100]);
+            Console.WriteLine("85 percentile : {0:N1} h", orderedTimes[orderedTimes.Length * 85 / 100]);
+            Console.WriteLine("95 percentile : {0:N1} h", orderedTimes[orderedTimes.Length * 95 / 100]);
+
+            //var repeatCountGroups = repeatCounts.GroupBy(x => x).Select(x => new { Repeats = x.Key, Count = x.Count() })
+            //    .OrderBy(x => x.Repeats);
+
+            //Console.WriteLine($"Fix counts:");
+            //foreach (var countGroup in repeatCountGroups)
+            //{
+            //    Console.WriteLine($"{countGroup.Repeats}: {countGroup.Count}");
+            //}
 
             var lower = (int) Math.Floor(successTime.Min());
-            var upper = (int) Math.Ceiling(successTime.OrderBy(x => x).ElementAt(successTime.Count * 995 / 1000));
+            var upper = (int) Math.Ceiling(orderedTimes.ElementAt(successTime.Count * 995 / 1000));
 
             var histogram = new Histogram(successTime, upper - lower, lower, upper);
 
