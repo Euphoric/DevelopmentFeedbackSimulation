@@ -10,6 +10,11 @@ namespace FeedbackLoopSimulation
         public string Name { get; }
 
         /// <summary>
+        /// Description
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// Chance a development change will introduce an error.
         /// </summary>
         public double ChangeErrorProbability { get; set; }

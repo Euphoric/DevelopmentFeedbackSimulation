@@ -14,16 +14,23 @@ namespace FeedbackLoopSimulation
         {
             List<DevelopmentSimulation> simulations = new List<DevelopmentSimulation>()
             {
-                new DevelopmentSimulation("Minimal testing"),
+                new DevelopmentSimulation("Minimal testing")
+                {
+                    Description = "Development process with minimal testing."
+                },
 
                 new DevelopmentSimulation("Heavy manual testing")
                 {
+                    Description = "Process where most testing is done manually",
+
                     ManualTestSpeed = LogNormal.WithMeanVariance(16, 10 * 10),
                     ManualTestDetectionChance = new ContinuousUniform(0.5, 0.9)
                 },
 
                 new DevelopmentSimulation("Mostly integration tests")
                 {
+                    Description = "Testing where slow integration tests are used. Allows for lower manual testing.",
+
                     DailyTestSpeed = new ContinuousUniform(2, 6),
                     DailyTestDetectionChance = new ContinuousUniform(0.2, 0.6),
 
@@ -33,6 +40,8 @@ namespace FeedbackLoopSimulation
 
                 new DevelopmentSimulation("Unit + integration tests")
                 {
+                    Description = "Testing with some unit tests and integration tests. Allows for low manual testing.",
+
                     CommitTestSpeed = new ContinuousUniform(0.1, 1),
                     CommitTestDetectionChance = new ContinuousUniform(0.2, 0.6),
 
@@ -45,6 +54,8 @@ namespace FeedbackLoopSimulation
 
                 new DevelopmentSimulation("Better unit + integration tests")
                 {
+                    Description = "Testing with good unit tests and integration tests. Allows for minimal manual testing.",
+
                     CommitTestSpeed = new ContinuousUniform(0.1, 1),
                     CommitTestDetectionChance = new ContinuousUniform(0.5, 0.8),
 
@@ -57,6 +68,8 @@ namespace FeedbackLoopSimulation
 
                 new DevelopmentSimulation("Continuous delivery")
                 {
+                    Description = "Testing with highly reliable unit tests and integration tests and almost no manual testing.",
+
                     CommitTestSpeed = new ContinuousUniform(0.1, 1),
                     CommitTestDetectionChance = new ContinuousUniform(0.7, 0.9),
 
@@ -69,6 +82,8 @@ namespace FeedbackLoopSimulation
 
                 new DevelopmentSimulation("Heavy manual testing + shorter dev time")
                 {
+                    Description = "Same as Heavy manual testing but with shorter development times",
+
                     DevSpeed = LogNormal.WithMeanVariance(2, 2 * 2),
                     FixSpeed = LogNormal.WithMeanVariance(0.2, 1 * 1),
 
@@ -78,6 +93,8 @@ namespace FeedbackLoopSimulation
 
                 new DevelopmentSimulation("Continuous delivery + shorter dev time")
                 {
+                    Description = "Same as Continuous delivery but with shorter development times",
+
                     DevSpeed = LogNormal.WithMeanVariance(2, 2 * 2),
                     FixSpeed = LogNormal.WithMeanVariance(0.2, 1 * 1),
 
@@ -124,7 +141,8 @@ namespace FeedbackLoopSimulation
                 }
             }
 
-            Console.WriteLine($"Simulation: {simulation.Name}");
+            Console.WriteLine($"## {simulation.Name}");
+            Console.WriteLine($"{simulation.Description}");
             var detectionChance = missedCount / (double) trialCount * 100;
             Console.WriteLine($"Missed errors probability: {detectionChance:N1}%");
             Console.WriteLine($"Development time average: {successTime.Average():N1} h");
